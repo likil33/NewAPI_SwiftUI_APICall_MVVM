@@ -17,6 +17,9 @@ struct NewsView: View {
                 List(viewModel.newList){ news in
                     NewsListView(alrticles: news)
                 }
+                .task {
+                    await viewModel.getNews()
+                }
             }
             .navigationTitle("News")
             .alert("Error", isPresented: .constant(false)) {

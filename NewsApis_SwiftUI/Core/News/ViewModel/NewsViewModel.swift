@@ -11,9 +11,10 @@ import Foundation
 class NewsViewModel:ObservableObject {
     
     @Published var newList:[Articles] = []
+    @Published var errorMessage: String?
     
     init() {
-        Task {await self.getNews()}
+//        Task {await self.getNews()}
     }
     
     
@@ -31,5 +32,42 @@ class NewsViewModel:ObservableObject {
 }
 
 
-//POST
-//let response:NewsModelRes = try await APIService.shared.request(endpoint: APIEndPoint.news.url, method: .put, headers: nil, parameters: [:])
+
+
+
+
+
+/*
+ 
+ import Foundation
+
+
+ class NewsViewModel:ObservableObject {
+     
+     @Published var newList:[Articles] = []
+     
+     init() {
+         Task {await self.getNews()}
+     }
+     
+     
+     @MainActor
+     func getNews() async {
+         do {
+             let response:NewsModelRes = try await APIService.shared.request(endpoint: APIEndPoint.news.url)
+             self.newList = response.articles ?? []
+             print(self.newList.count)
+         }
+         catch {
+             print("Request failed:\(error)")
+         }
+     }
+ }
+
+
+ //POST
+ //let response:NewsModelRes = try await APIService.shared.request(endpoint: APIEndPoint.news.url, method: .put, headers: nil, parameters: [:])
+
+ 
+ 
+ */
