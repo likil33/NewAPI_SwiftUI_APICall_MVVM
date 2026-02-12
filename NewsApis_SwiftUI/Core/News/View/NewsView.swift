@@ -28,10 +28,10 @@ struct NewsView: View {
                 }
             }
             .navigationTitle("News")
-            .alert("Error", isPresented: .constant(false)) {
+            .alert("Error", isPresented: .constant(((viewModel.errorMessage?.isEmpty) != nil))) {
                 Button("OK", role: .cancel) {}
             } message: {
-                Text("Something went wrong")
+                Text(viewModel.errorMessage ?? "Something went wrong")
             }
         }
     }
