@@ -14,6 +14,12 @@ struct NewsView: View {
     var body: some View {
         NavigationStack {
             Group{
+                
+                if let errorMessage = viewModel.errorMessage { 
+                    Text(errorMessage) .foregroundColor(.red) .padding()
+                }
+                
+                
                 List(viewModel.newList){ news in
                     NewsListView(alrticles: news)
                 }

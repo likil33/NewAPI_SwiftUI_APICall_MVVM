@@ -26,7 +26,7 @@ class NewsViewModel:ObservableObject {
             print(self.newList.count)
         }
         catch {
-            print("Request failed:\(error)")
+            self.errorMessage = "Request failed:\(error)"
         }
     }
 }
